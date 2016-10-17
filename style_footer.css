@@ -1,0 +1,47 @@
+
+/* Footer */
+
+footer
+{
+    display: flex;
+    background:  url('images/ico_top.png') no-repeat top center, url('images/separateur.png') repeat-x top, url('images/ombre.png') repeat-x top;
+    padding-top: 25px;
+}
+
+footer p, footer ul
+{
+    font-size: 0.8em;
+}
+
+footer h1
+{
+    font-size: 1.1em;
+}
+
+
+#coms
+{
+    width: 28%;
+}
+
+#signature
+{
+    width: 35%;
+}
+
+#liens
+{
+    width: 31%;
+}
+
+
+#liens ul
+{
+    padding-left: 2px;
+}
+
+#liens a
+{
+    text-decoration: none;
+    color: #760001;
+}

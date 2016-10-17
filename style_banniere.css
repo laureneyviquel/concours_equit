@@ -1,0 +1,29 @@
+
+/* Bannière */
+
+#banniere_image
+{
+    margin-top: 15px;
+    height: 200px;
+    border-radius: 5px;/* arrondi les angles */
+    background: url('principal/cross_pano.jpg') no-repeat;
+    position: relative;
+    box-shadow: 0px 4px 4px #1c1a19;/* les ombres des boites */
+    margin-bottom: 25px;
+}
+
+#banniere_description
+{
+    position: absolute;
+    bottom: 0;
+    border-radius: 0px 0px 5px 5px;/* forme de l'arrondi */
+    width: 99.5%;
+    height: 33px;
+    padding-top: 15px;
+    padding-left: 4px;
+    background-color: rgba(24,24,24,0.8);
+    color: white;
+    font-size: 0.8em;
+    text-align: right;
+}
+
