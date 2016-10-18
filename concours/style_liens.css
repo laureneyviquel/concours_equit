@@ -1,0 +1,26 @@
+/* Navigation */
+
+nav ul
+{
+    list-style-type: none;/* Retire les puces sur la liste de liens */
+    display: flex;
+}
+
+nav li
+{
+    margin-right: 15px;
+}
+
+nav a
+{
+    font-size: 1.3em;
+    color: black;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+
+nav a:hover
+{
+    color: #760001;
+    border-bottom: 3px solid #760001;
+}

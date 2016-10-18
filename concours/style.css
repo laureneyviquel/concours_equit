@@ -1,0 +1,29 @@
+/* Eléments principaux de la page */
+
+body
+{
+    background: url('principal/fond.jpg');
+    font-family: 'Trebuchet MS', Arial, sans-serif;/*la police*/
+    /*color: #181818;*/
+}
+
+#bloc_page
+{
+    width: 90%;/*ou : width: 900px;*/
+    margin: auto;
+}
+
+#connection
+{
+    width: 90%;/*ou : width: 900px;*/
+    margin: auto;
+}
+
+section h1, footer h1, nav a
+{
+    
+    font-family: 'BallparkWeiner', serif;
+    font-weight: normal;
+    text-transform: uppercase;/*pour que les titres tjs en majuscules*/
+
+}
