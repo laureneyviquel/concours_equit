@@ -4,14 +4,14 @@
   <head>
     <title>Site Concours Equitation</title>
     <meta charset="utf-8" />
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="bootstrap/css/tuto.css" rel="stylesheet">
-    <script src="bootstrap/js/jquery.js"></script>
-    <script src="bootstrap/js/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="lib/bootstrap/css/tuto.css" rel="stylesheet">
+    <script src="lib/bootstrap/js/jquery.js"></script>
+    <script src="lib/bootstrap/js/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 
   <!-- Un peu de style pour la visualisation -->
-    <link rel="stylesheet" href="style_bootstrap.css" />
+    <link rel="stylesheet" href="image/style_bootstrap.css" />
     <style type="text/css">
     .col-lg-2 { line-height: 100px; }
     .col-lg-5 { line-height: 200px; }
@@ -38,12 +38,12 @@
                         ?>
                         <!-- formulaire transmet à la page cible "site_modifier.php" -->
 
-                        <form action="site_creer.php" method="post" enctype="multipart/form-data" class="well"> 
+                        <form action="site_creer.php" method="post" enctype="multipart/form-data" class="well">
                         <p>
 
                             <label for="cavalier" >Cavalier</label> : <input type="text" name="cavalier" id="cavalier" class="form-control"/><br />
 
-                               
+
                                 <label for="note">Note</label> : <select name="note">;
                                 <?php //affiche toutes les notes de 1 à 100 dans la liste déroulante
                                 for($i=1; $i<=100; $i++){
@@ -78,7 +78,7 @@
           <div class="row">
 
 
-                <?php 
+                <?php
 
                 $people = User::order_by_desc('note')->find_many();
                 foreach ($people as $one) {
@@ -102,11 +102,11 @@
                             ?>
                               <!-- formulaire transmet à la page cible "site_modifier.php" pour modifier -->
 
-                                <form action="site_modifier.php" method="post" enctype="multipart/form-data"> 
+                                <form action="site_modifier.php" method="post" enctype="multipart/form-data">
                                 <article class="col-lg-3 col-md-8">
                                   <label for="cavalier">Cavalier</label> : <input type="text" name="cavalier" id="cavalier" value="<?php echo $one ->cavalier; ?>" class="form-control"/><br />
 
-                           
+
                                     <label for="note">Note</label> : <select name="note">;
                                     <?php //affiche toutes les notes de 1 à 100 dans la liste déroulante
                                     for($i=1; $i<=100; $i++){

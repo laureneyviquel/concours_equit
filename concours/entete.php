@@ -2,7 +2,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-2">
-            <img src="principal/logo.png" alt="Logo cheval cavalier" />
+            <img src="image/principal/logo.png" alt="Logo cheval cavalier" />
         </div>
         <div class="col-xs-10">
             <h1>Concours Equitation</h1>
@@ -12,9 +12,9 @@
     </div>
 
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> 
-    <div class="container">  
-      <div class="navbar-header">   
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -25,7 +25,7 @@
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li> <a href="index.html">Accueil</a> </li>
-         <li class="dropdown"> 
+         <li class="dropdown">
             <a data-toggle="dropdown" href="">Liens<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="http://www.ffe.com/">Site FFE</a></li>
@@ -43,11 +43,11 @@
         <div id="carousel" class="carousel slide" data-ride="carousel">
 
           <div class="carousel-inner">
-            <div class="item active"> <img alt="" src="principal/panorama-dinard.jpg">
+            <div class="item active"> <img alt="" src="image/principal/panorama-dinard.jpg">
             <h4 class="carousel-caption">Bienvenue <br /> sur le site pour suivre les résultats des concours d'équitation !</h4>
             </div>
-            <div class="item"> <img alt="" src="principal/carriere_pano.jpg"></div>
-            <div class="item"> <img alt="" src="principal/club_pano.jpg"></div>
+            <div class="item"> <img alt="" src="image/principal/carriere_pano.jpg"></div>
+            <div class="item"> <img alt="" src="image/principal/club_pano.jpg"></div>
           </div>
           <a class="left carousel-control" href="#carousel" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left"></span>

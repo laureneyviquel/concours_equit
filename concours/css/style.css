@@ -2,7 +2,7 @@
 
 body
 {
-    background: url('principal/fond.jpg');
+    background: url('image/principal/fond.jpg');
     font-family: 'Trebuchet MS', Arial, sans-serif;/*la police*/
     /*color: #181818;*/
 }
@@ -21,7 +21,7 @@ body
 
 section h1, footer h1, nav a
 {
-    
+
     font-family: 'BallparkWeiner', serif;
     font-weight: normal;
     text-transform: uppercase;/*pour que les titres tjs en majuscules*/
