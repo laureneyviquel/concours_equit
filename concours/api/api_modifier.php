@@ -7,6 +7,15 @@
 // $tache->setZ($_GET['Z'])
 // $tache->save()
 
+$person = ORM::for_table('tournoi')->find_one($_POST['id']);
+// The following two forms are equivalent
+$person->set('cavalier', $_POST['cavalier']);
+$person->note = $_POST['note'];
+$person->set('cheval', $_POST['cheval']);
+$person->set('id', $_POST['id']);
+// Syncronise the object with the database
+$person->save();
+
 // et on retourne le json de $tache !
 // NB : il faut appeler la méthode toArray de Paris, sinon ça chie
 echo json_encode($tache->toArray());

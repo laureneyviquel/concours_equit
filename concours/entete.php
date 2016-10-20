@@ -25,6 +25,7 @@
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li> <a href="index.html">Accueil</a> </li>
+          <li> <a href="minichat.php">Minichat</a> </li>
          <li class="dropdown">
             <a data-toggle="dropdown" href="">Liens<b class="caret"></b></a>
             <ul class="dropdown-menu">

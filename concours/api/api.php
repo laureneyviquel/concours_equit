@@ -6,6 +6,7 @@ if(!isset($_GET) || empty($_GET)){
 }
 
 // ici, ajoutez le code pour require IdiORM, Paris, etc
+ include("include_minichat.php");
 
 // selon le verbe d'action, on require le bon fichier
 switch($_GET['action']){
@@ -13,10 +14,10 @@ switch($_GET['action']){
     require_once('api_creer.php');
     break;
   case 'consulter':
-    require_once('api_consulter.php');
+    require_once('api_consulter.php'); //retourne 1 message
     break;
   case 'index':
-    require_once('api_index.php');
+    require_once('api_index.php'); //retourne tous les messages du chat
     break;
   case 'modifier':
     require_once('api_modifier.php');

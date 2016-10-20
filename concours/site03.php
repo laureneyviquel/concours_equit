@@ -11,7 +11,7 @@
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 
   <!-- Un peu de style pour la visualisation -->
-    <link rel="stylesheet" href="image/style_bootstrap.css" />
+    <link rel="stylesheet" href="css/style_bootstrap.css" />
     <style type="text/css">
     .col-lg-2 { line-height: 100px; }
     .col-lg-5 { line-height: 200px; }

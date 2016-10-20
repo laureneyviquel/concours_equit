@@ -4,8 +4,8 @@
     <head>
         <title>Connexion</title>
         <meta charset="utf-8" />
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="bootstrap/css/tuto.css" rel="stylesheet">
+        <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="lib/bootstrap/css/tuto.css" rel="stylesheet">
         <style type="text/css">
             .col-lg-2 { line-height: 100px; }
             .col-lg-5 { line-height: 200px; }
@@ -90,28 +90,28 @@
             <button type="submit" class="btn btn-primary pull-right"><span class = "glyphicon glyphicon-user" ></span> Connexion</button>
             <div class="alert alert-block alert-danger" style="display:none">
               <h4>Erreur !</h4>
-              Votre mot de passe n'est pas valide ! 
+              Votre mot de passe n'est pas valide !
             </div>
           </form>
         </div>
-        <script src="bootstrap/js/jquery-3.1.1.js"></script> 
+        <script src="bootstrap/js/jquery-3.1.1.js"></script>
         <script>
           $(function(){
             $("form").on("submit", function() {
               if(!isset($_POST['mot_de_passe']) OR $_POST['mot_de_passe'] != "admin") {
                 $("div.form-group").addClass("has-error");
                 $("div.alert").show("slow").delay(4000).hide("slow");
-                return false; 
+                return false;
               }
                // Le mot de passe a été envoyé et il est bon
                 else
                 {
-                    
-                    //Vous etes connecté 
+
+                    //Vous etes connecté
                     <?php
                    // $_SESSION['prenom'] = 'autorise';
                     ?>
-                    
+
                 }
 
             });
@@ -124,7 +124,7 @@
         </div>
       </div>
       </div>
-    
+
 
     </body>
 </html>
