@@ -8,7 +8,7 @@ ORM::configure('mysql:host=localhost;dbname=concours_equitation');
 ORM::configure('username', 'root');
 ORM::configure('password', '');
 
-class User extends Model {
+class Tache extends Model {
  public static $_tache = 'minichat';
 }
 ?>

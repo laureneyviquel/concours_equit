@@ -17,7 +17,9 @@
           <p>voici le nouveau chat</p>
 
 
-          <div id="messages"></div><br />
+          <article id="messages"></article><br />
+          
+
           <textarea id="auteur">Votre nom ici</textarea><br />
           <textarea id="texte" rows="8" cols="45">Votre message ici.</textarea><br />
 
@@ -29,10 +31,11 @@
               $('#envoyer').click(function() {
                 $.ajax({
                   type: 'GET',
-                  url: 'http://localhost/api.php?action=creer&auteur=auteur&texte=texte',
+                  url: 'api/api.php?action=creer&auteur=auteur&texte=texte',
                   timeout: 3000,
                   success: function(data) {
-                    alert(data); },
+                    //alert(data);
+                  },
                   error: function() {
                     alert('La requête n\'a pas abouti'); }
                 });
@@ -40,6 +43,9 @@
             });
             </script>
           </div>
+          <div class="col-sm-12">
+         <p>Si tu veux retourner à la page d'acceuil, <a href="site03.php">clique ici</a></p>
+         </div>
         </div>
       </div>
   </body>
