@@ -1,22 +1,20 @@
 <?php
 
 // ici on aura un truc du style
-// $tache = Tache::create();
-// $tache->setX($_GET['X'])
-// $tache->setY($_GET['Y'])
-// $tache->setZ($_GET['Z'])
-// $tache->save()
+// $message = Tache::create();
+// $message->setX($_GET['X'])
+// $message->setY($_GET['Y'])
+// $message->setZ($_GET['Z'])
+// $message->save()
 
-//$tache = ORM::for_table('minichat')->create();
-$tache = Tache::create();
-$tache->auteur($_GET['auteur']);
-$tache->texte($_GET['texte']);
-$tache->save();
+//$message = ORM::for_table('minichat')->create();
+$message = Message::create();
+$message->auteur = ($_GET['auteur']);
+$message->texte = ($_GET['message']);
+$message->save();
 
 
 
-// et on retourne le json de $tache !
-// NB : il faut appeler la méthode toArray de Paris, sinon ça chie
-echo json_encode($tache->toArray());
-// fin des bails
-die();
+// et on retourne le json de $message !
+// NB : il faut appeler la méthode asArray de Paris, sinon ça chie
+echo json_encode($message->asArray());

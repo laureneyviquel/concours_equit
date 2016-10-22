@@ -11,39 +11,78 @@
 
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
+      <div class="">
+        <div class="row">
           <h1>Hello !<br /></h1>
           <p>voici le nouveau chat</p>
 
 
-          <article id="messages"></article><br />
-          
+          <div id="messages">
 
-          <textarea id="auteur">Votre nom ici</textarea><br />
-          <textarea id="texte" rows="8" cols="45">Votre message ici.</textarea><br />
+          </div>
+
+          <label>Votre prénom ici</label>
+          <input type="text" id="auteur"/><br />
+          <label>Votre message ici.</label>
+          <textarea id="texte" rows="8" cols="45"></textarea><br />
 
           <button id="envoyer">Envoyer votre message</button><br />
 
-          <script src="jquery.js"></script>
+
           <script>
             $(function() {
+              // de base on télécharge tous les messages
+              $.get('api/api.php?action=index', function(data){ // raccourci par rapport à $.ajax({ ... })
+                // on check que c'est bien conforme
+                console.log(data);
+                // conversion en objets javscript
+                var messages = $.parseJSON(data);
+                // check que c'est bien conforme
+                console.log(messages);
+                // maintenant, pour chaque message, on l'ajoute à la div#messages :)
+                for(var i=0 ; i<messages.length ; i++){
+                  var message = messages[i];
+                  ajouterMessage(message);
+                }
+              })
+              // au clic sur envoyer
               $('#envoyer').click(function() {
+                // on récupère le nom de l'auteur
+                var auteur = $("#auteur").val();
+                // on récupère le contenu du message
+                var message = $('#texte').val();
+                console.log('Envoi du message '+auteur+' : '+message);
+
                 $.ajax({
                   type: 'GET',
-                  url: 'api/api.php?action=creer&auteur=auteur&texte=texte',
+                  url: 'api/api.php?action=creer&auteur='+auteur+'&message='+message,
                   timeout: 3000,
                   success: function(data) {
-                    //alert(data);
+                    // si l'ajout du message s'est bien passé,
+                    // on arrive dans cette fonction
+                    // on regarde ce qu'il y a dans data
+                    console.log(data);
+                    // normalement c'est un JSON, donc on le convertit
+                    var message = $.parseJSON(data);
+                    // puis on l'ajoute à la liste des messages :)
+                    ajouterMessage(message);
                   },
                   error: function() {
-                    alert('La requête n\'a pas abouti'); }
+                    alert('La requête n\'a pas abouti');
+                  }
                 });
+
               });
+
+              function ajouterMessage(message){
+                $('#messages').append('<article class="message"><b>'+message.auteur+'</b> a dit '+message.texte+'</article>');
+              }
+
+
             });
             </script>
           </div>
-          <div class="col-sm-12">
+          <div class="row">
          <p>Si tu veux retourner à la page d'acceuil, <a href="site03.php">clique ici</a></p>
          </div>
         </div>

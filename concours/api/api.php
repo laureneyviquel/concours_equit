@@ -2,7 +2,7 @@
 
 // check si on a bien du GET
 if(!isset($_GET) || empty($_GET)){
-  die('il faut envoyer des données post !');
+  die('il faut envoyer des données GET !');
 }
 
 // ici, ajoutez le code pour require IdiORM, Paris, etc

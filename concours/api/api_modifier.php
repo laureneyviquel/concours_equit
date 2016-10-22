@@ -7,12 +7,12 @@
 // $tache->setZ($_GET['Z'])
 // $tache->save()
 
-$person = ORM::for_table('tournoi')->find_one($_POST['id']);
+$person = ORM::for_table('tournoi')->find_one($_GET['id']);
 // The following two forms are equivalent
-$person->set('cavalier', $_POST['cavalier']);
-$person->note = $_POST['note'];
-$person->set('cheval', $_POST['cheval']);
-$person->set('id', $_POST['id']);
+$person->set('cavalier', $_GET['cavalier']);
+$person->note = $_GET['note'];
+$person->set('cheval', $_GET['cheval']);
+$person->set('id', $_GET['id']);
 // Syncronise the object with the database
 $person->save();
 
