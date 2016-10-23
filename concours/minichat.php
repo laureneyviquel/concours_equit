@@ -7,7 +7,6 @@
     <script src="lib/bootstrap/js/jquery.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="lib/bootstrap/js/jquery.min.js"></script>
-    <script src="lib/bootstrap/fronts/glyphicons-halflings-regular.woff"></script>
     <link rel="stylesheet" href="css/style_bootstrap.css" />
   </head>
 
@@ -78,44 +77,48 @@
 
               });
 
-              // au clic sur supprimer
-              $('.supprimer').click(function() {
-                console.log('click sur supprimer');
-                // on récupère l'id du message
-                var identifiant = $('id').val();
-                console.log('id du message supprimer'+identifiant);
-
-                $.ajax({
-                  type: 'GET',
-                  url: 'api/api.php?action=supprimer&identifiant='+identifiant,
-                  timeout: 3000,
-                  success: function(data) {
-                    // si l'ajout du message s'est bien passé,
-                    // on arrive dans cette fonction
-                    // on regarde ce qu'il y a dans data
-                    console.log(data);
-                  },
-                  error: function() {
-                    alert('La requête n\'a pas abouti');
-                  }
-                });
-
-              });
-
               function ajouterMessage(message){
-                $('#messages').append('<article class="message"><b>'+message.auteur+'</b> a dit '+message.texte+'</article>');
-              }
+                var s = '';
+                s += '<article class="message">';
+                s += '<b><span class="glyphicon glyphicon-user"></span>'+message.auteur+'</b> a dit '+message.texte;
+                s += '</article>';
+                $('#messages').append(s);
+              };
 
               function boutonSupprimer(message){
                 //$('#messages').append('<input type="hidden" name="id" value= '+message.identifiant+' />');
-                $('#messages').append('<span class="supprimer btn btn-danger" data-id= "'+message.identifiant+'" />');
+                var s = '';
+                s += '<span class="supprimer btn btn-danger" onclick="supprimerMessage('+message.id+')" >';
+                s += '<span class="glyphicon glyphicon-trash"></span>';
+                s += 'supprimer';
+                s += '</span>';
+                $('#messages').append(s);
                 //$('#messages').append('<button class="supprimer" type="submit"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>');
-              }
+              };
 
 
 
 
             });
+            // au clic sur supprimer
+            function supprimerMessage(identifiant) {
+              console.log('id du message à supprimer'+identifiant);
+              $.ajax({
+                type: 'GET',
+                url: 'api/api.php?action=supprimer&identifiant='+identifiant,
+                timeout: 3000,
+                success: function(data) {
+                  // si la suppression du message s'est bien passée,
+                  // on arrive dans cette fonction
+                  // on regarde ce qu'il y a dans data
+                  console.log(data);
+                },
+                error: function() {
+                  alert('La requête n\'a pas abouti');
+                }
+              });
+
+            };
             </script>
           </div>
           <div class="row">
