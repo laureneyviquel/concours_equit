@@ -15,19 +15,20 @@
       <div class="">
         <div class="row">
           <h1>Hello !<br /></h1>
-          <p>voici le nouveau chat</p>
+          <p>voici le nouveau chat</p><br /><br />
 
 
           <div id="messages">
 
-          </div>
+          </div><br />
+          <button id="rafraichir" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-refresh"></span> Rafraichir la page</button><br /><br />
 
           <label>Votre prénom ici</label>
           <input type="text" id="auteur"/><br />
           <label>Votre message ici.</label>
-          <textarea id="texte" rows="8" cols="45"></textarea><br />
+          <textarea id="texte" rows="8" cols="45"></textarea><br /><br />
 
-          <button id="envoyer">Envoyer votre message</button><br />
+          <button id="envoyer" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-send"></span> Envoyer votre message</button><br /><br />
 
 
           <script>
@@ -44,6 +45,7 @@
                 for(var i=0 ; i<messages.length ; i++){
                   var message = messages[i];
                   ajouterMessage(message);
+                  boutonDetail(message);
                   boutonSupprimer(message);
                 }
               })
@@ -68,7 +70,7 @@
                     var message = $.parseJSON(data);
                     // puis on l'ajoute à la liste des messages :)
                     ajouterMessage(message);
-
+                    effacer();
                   },
                   error: function() {
                     alert('La requête n\'a pas abouti');
@@ -80,24 +82,34 @@
               function ajouterMessage(message){
                 var s = '';
                 s += '<article class="message">';
-                s += '<b><span class="glyphicon glyphicon-user"></span>'+message.auteur+'</b> a dit '+message.texte;
+                s += '<b><span class="glyphicon glyphicon-user"></span>'+' '+message.auteur+'</b> a dit '+message.texte;
                 s += '</article>';
                 $('#messages').append(s);
               };
 
               function boutonSupprimer(message){
-                //$('#messages').append('<input type="hidden" name="id" value= '+message.identifiant+' />');
                 var s = '';
                 s += '<span class="supprimer btn btn-danger" onclick="supprimerMessage('+message.id+')" >';
                 s += '<span class="glyphicon glyphicon-trash"></span>';
-                s += 'supprimer';
+                s += ' supprimer';
                 s += '</span>';
                 $('#messages').append(s);
-                //$('#messages').append('<button class="supprimer" type="submit"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>');
+              };
+
+              function boutonDetail(message){
+                var s = '';
+                s += '<span class="supprimer btn btn-warning" onclick="detailMessage('+message.id+')" >';
+                s += '<span class="glyphicon glyphicon-edit"></span>';
+                s += ' detail';
+                s += '</span>';
+                $('#messages').append(s);
               };
 
 
-
+              //raffraichit la page quand on clique sur le bouton rafraichir
+              $( "#rafraichir" ).click(function() {
+                  raffraichir();
+              });
 
             });
             // au clic sur supprimer
@@ -112,6 +124,7 @@
                   // on arrive dans cette fonction
                   // on regarde ce qu'il y a dans data
                   console.log(data);
+                  raffraichir();
                 },
                 error: function() {
                   alert('La requête n\'a pas abouti');
@@ -119,6 +132,43 @@
               });
 
             };
+
+            // au clic sur detail
+            function detailMessage(identifiant) {
+              console.log('id du message à detailler'+identifiant);
+              $.ajax({
+                type: 'GET',
+                url: 'api/api.php?action=consulter&identifiant='+identifiant,
+                timeout: 3000,
+                success: function(data) {
+                  // si la suppression du message s'est bien passée,
+                  // on arrive dans cette fonction
+                  // on regarde ce qu'il y a dans data
+                  console.log(data);
+                  alert(data);
+                },
+                error: function() {
+                  alert('La requête n\'a pas abouti');
+                }
+              });
+
+            };
+
+            //vide les champs quand on envoie un message
+            function effacer () {
+              $(':input')
+               .not(':button, :submit, :reset, :hidden')
+               .val('')
+               .removeAttr('checked')
+               .removeAttr('selected');
+            }
+
+            function raffraichir () {
+              location.reload();
+            }
+
+
+
             </script>
           </div>
           <div class="row">
