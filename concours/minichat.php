@@ -6,6 +6,8 @@
     <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
     <script src="lib/bootstrap/js/jquery.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/bootstrap/js/jquery.min.js"></script>
+    <script src="lib/bootstrap/fronts/glyphicons-halflings-regular.woff"></script>
     <link rel="stylesheet" href="css/style_bootstrap.css" />
   </head>
 
@@ -43,6 +45,7 @@
                 for(var i=0 ; i<messages.length ; i++){
                   var message = messages[i];
                   ajouterMessage(message);
+                  boutonSupprimer(message);
                 }
               })
               // au clic sur envoyer
@@ -66,6 +69,31 @@
                     var message = $.parseJSON(data);
                     // puis on l'ajoute à la liste des messages :)
                     ajouterMessage(message);
+
+                  },
+                  error: function() {
+                    alert('La requête n\'a pas abouti');
+                  }
+                });
+
+              });
+
+              // au clic sur supprimer
+              $('.supprimer').click(function() {
+                console.log('click sur supprimer');
+                // on récupère l'id du message
+                var identifiant = $('id').val();
+                console.log('id du message supprimer'+identifiant);
+
+                $.ajax({
+                  type: 'GET',
+                  url: 'api/api.php?action=supprimer&identifiant='+identifiant,
+                  timeout: 3000,
+                  success: function(data) {
+                    // si l'ajout du message s'est bien passé,
+                    // on arrive dans cette fonction
+                    // on regarde ce qu'il y a dans data
+                    console.log(data);
                   },
                   error: function() {
                     alert('La requête n\'a pas abouti');
@@ -77,6 +105,14 @@
               function ajouterMessage(message){
                 $('#messages').append('<article class="message"><b>'+message.auteur+'</b> a dit '+message.texte+'</article>');
               }
+
+              function boutonSupprimer(message){
+                //$('#messages').append('<input type="hidden" name="id" value= '+message.identifiant+' />');
+                $('#messages').append('<input  class="supprimer btn btn-danger" type="submit" value= '+message.identifiant+' />');
+                //$('#messages').append('<button class="supprimer" type="submit"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>');
+              }
+
+
 
 
             });
