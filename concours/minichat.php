@@ -108,7 +108,7 @@
 
               function boutonSupprimer(message){
                 //$('#messages').append('<input type="hidden" name="id" value= '+message.identifiant+' />');
-                $('#messages').append('<input  class="supprimer btn btn-danger" type="submit" value= '+message.identifiant+' />');
+                $('#messages').append('<span class="supprimer btn btn-danger" data-id= "'+message.identifiant+'" />');
                 //$('#messages').append('<button class="supprimer" type="submit"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>');
               }
 
